@@ -25,7 +25,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flexi_text: ^0.0.2
+  flexi_text: ^0.0.4
 ```
 
 Then run:

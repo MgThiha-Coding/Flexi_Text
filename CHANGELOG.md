@@ -21,24 +21,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
-### How to update this file
-
-For each new version:
-
-1. Add a new section with the version number and release date.
-2. List changes under appropriate headings:
-   - Added
-   - Changed
-   - Deprecated
-   - Removed
-   - Fixed
-   - Security
-
-Example:
-
-```markdown
 ## [0.0.2] - 2025-10-05
 ### Added
-- New feature XYZ
-### Fixed
-- Bug ABC
+- Updated README with improved examples and formatting.
+- Added demonstration of **min/max font size** usage.
+- Enhanced **semanticsLabel** support for accessibility.
+- Provided advanced usage examples including `textAlign`, `maxLines`, and `overflow`.
+
+---
+
+## [0.0.3] - 2025-10-10
+### Changed
+- Minor optimizations in font size interpolation.
+- Updated README for better readability on pub.dev.
+- Example app code improvements and alignment adjustments.
+- Fixed minor issues with style fallbacks.
+
+---
+
+## [0.0.4] - 2025-10-30
+### Changed
+- Removed optional `padding` from `FlexiText`.
+- Updated README to provide a **single-copy button** version for easier user experience.
+- Minor UI improvements and formatting updates.
+- Improved package description and usage instructions for pub.dev.
+
+---
