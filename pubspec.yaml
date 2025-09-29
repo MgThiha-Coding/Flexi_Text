@@ -1,0 +1,26 @@
+name: flexi_text
+description: A responsive and flexible Text widget for Flutter with smooth scaling.
+version: 0.0.1
+publish_to: "https://pub.dev"
+homepage: https://github.com/<your-github>/flexi_text
+repository: https://github.com/<your-github>/flexi_text
+authors:
+  - Min Thiha Aung <minthihaaung950@gmail.com>
+license: MIT
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
