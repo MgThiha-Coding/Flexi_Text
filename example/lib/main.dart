@@ -34,11 +34,10 @@ class MyApp extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // With padding
+              // Removed padding usage
               FlexiText(
-                title: "Text with Padding",
+                title: "Text without Padding",
                 sizes: {300: 10, 600: 14, 1200: 22},
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 style: const TextStyle(color: Colors.green),
               ),
               const SizedBox(height: 16),

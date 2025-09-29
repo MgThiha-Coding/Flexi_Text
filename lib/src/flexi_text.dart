@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// A responsive and flexible text widget that automatically adjusts
 /// its font size based on the available screen width.
-/// 
+///
 /// Designed for mobile, tablet, and desktop screens with smooth
 /// interpolation between breakpoints.
 ///
@@ -13,7 +13,6 @@ import 'package:flutter/material.dart';
 ///   sizes: {300: 12, 600: 16, 1200: 24},
 ///   minFontSize: 10,
 ///   maxFontSize: 28,
-///   padding: EdgeInsets.all(8),
 ///   style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
 ///   textAlign: TextAlign.center,
 ///   maxLines: 2,
@@ -36,9 +35,6 @@ class FlexiText extends StatelessWidget {
   /// Maximum font size to prevent text from being too large.
   final double? maxFontSize;
 
-  /// Optional padding around the text.
-  final EdgeInsetsGeometry? padding;
-
   /// Optional semantics label for accessibility.
   final String? semanticsLabel;
 
@@ -59,7 +55,6 @@ class FlexiText extends StatelessWidget {
     this.style,
     this.minFontSize,
     this.maxFontSize,
-    this.padding,
     this.semanticsLabel,
     this.textAlign,
     this.maxLines,
@@ -70,7 +65,6 @@ class FlexiText extends StatelessWidget {
   /// between the closest defined breakpoints in [sizes].
   double _getFontSize(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    // ignore: deprecated_member_use
     final textScale = MediaQuery.of(context).textScaleFactor;
 
     if (sizes.isEmpty) return 14 * textScale;
@@ -110,7 +104,7 @@ class FlexiText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textWidget = Text(
+    return Text(
       title,
       style: style?.copyWith(fontSize: _getFontSize(context)) ??
           Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: _getFontSize(context)) ??
@@ -120,10 +114,5 @@ class FlexiText extends StatelessWidget {
       overflow: overflow,
       semanticsLabel: semanticsLabel ?? title,
     );
-
-    // Wrap text in Padding if provided
-    return padding != null
-        ? Padding(padding: padding!, child: textWidget)
-        : textWidget;
   }
 }

@@ -45,7 +45,6 @@ void main() {
           home: FlexiText(
             title: testText,
             sizes: {300.0: 12.0, 600.0: 18.0},
-            padding: const EdgeInsets.all(16),
           ),
         ),
       );

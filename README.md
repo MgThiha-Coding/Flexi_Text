@@ -12,7 +12,6 @@ A **responsive and flexible Text widget for Flutter** that automatically adjusts
 - **Responsive Font Size:** Automatically scales text according to screen width.
 - **Smooth Interpolation:** Font size transitions smoothly between breakpoints.
 - **Min/Max Font Size:** Prevent text from becoming too small or too large.
-- **Optional Padding:** Easily add spacing around text without wrapping.
 - **Accessibility Friendly:** Respects `textScaleFactor` and supports `semanticsLabel`.
 - **Flexible Layout:** Supports `TextAlign`, `maxLines`, and `overflow`.
 - **Theming Support:** Falls back to `Theme.of(context).textTheme` if no style is provided.
@@ -24,16 +23,12 @@ A **responsive and flexible Text widget for Flutter** that automatically adjusts
 
 Add this to your `pubspec.yaml`:
 
-```yaml
 dependencies:
   flexi_text: ^0.0.1
-```
 
 Then run:
 
-```bash
 flutter pub get
-```
 
 ---
 
@@ -41,22 +36,17 @@ flutter pub get
 
 Import the package:
 
-```dart
 import 'package:flexi_text/flexi_text.dart';
-```
 
 Basic usage:
 
-```dart
 FlexiText(
   title: "Hello World",
   sizes: {300: 10, 600: 14, 1200: 24},
 )
-```
 
-Advanced usage with **min/max font size, padding, styling, alignment**:
+Advanced usage with **min/max font size, styling, alignment**:
 
-```dart
 FlexiText(
   title: "Responsive FlexiText",
   sizes: {
@@ -67,7 +57,6 @@ FlexiText(
   },
   minFontSize: 10,
   maxFontSize: 28,
-  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   style: TextStyle(
     color: Colors.blue,
     fontWeight: FontWeight.bold,
@@ -77,7 +66,6 @@ FlexiText(
   overflow: TextOverflow.ellipsis,
   semanticsLabel: "Important responsive text",
 )
-```
 
 ---
 
@@ -85,9 +73,7 @@ FlexiText(
 
 1. Define a **map of screen width to font size**:
 
-```dart
 sizes: {300: 10, 600: 14, 1200: 24}
-```
 
 2. The widget **interpolates font size** between defined breakpoints.
 3. Text scales automatically according to `MediaQuery.textScaleFactor`.
@@ -97,7 +83,7 @@ sizes: {300: 10, 600: 14, 1200: 24}
 
 ## 💡 Best Practices
 
-- **Wrap FlexiText with Padding** only if needed. Avoid hardcoding padding unless necessary.
+- **Wrap FlexiText with Padding** only if needed at the layout level. Avoid hardcoding padding inside the widget.
 - **Use clear breakpoints** for mobile, tablet, and desktop screens.
 - **Combine with Theme** for consistent styling across your app.
 
@@ -105,42 +91,44 @@ sizes: {300: 10, 600: 14, 1200: 24}
 
 ## 📖 Example App
 
-```dart
 import 'package:flutter/material.dart';
 import 'package:flexi_text/flexi_text.dart';
 
-class DemoPage extends StatelessWidget {
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("FlexiText Demo")),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FlexiText(
-              title: "Mobile Text",
-              sizes: {300: 10, 600: 14, 1200: 24},
-              style: TextStyle(color: Colors.red),
-            ),
-            SizedBox(height: 16),
-            FlexiText(
-              title: "Tablet/Desktop Text",
-              sizes: {300: 12, 600: 18, 1200: 28},
-              padding: EdgeInsets.all(8),
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ],
+    return MaterialApp(
+      title: 'FlexiText Demo',
+      home: Scaffold(
+        appBar: AppBar(title: const Text("FlexiText Demo")),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              FlexiText(
+                title: "Mobile Text",
+                sizes: {300: 10, 600: 14, 1200: 24},
+                style: const TextStyle(color: Colors.red),
+              ),
+              const SizedBox(height: 16),
+              FlexiText(
+                title: "Tablet/Desktop Text",
+                sizes: {300: 12, 600: 18, 1200: 28},
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-void main() {
-  runApp(MaterialApp(home: DemoPage()));
-}
-```
 
 ---
 
@@ -148,10 +136,10 @@ void main() {
 
 MIT License © 2025 **Min Thiha Aung**
 
-See [LICENSE](LICENSE) for details.
+See LICENSE for details.
 
 ---
 
 ## 📌 Pub.dev Page Appearance
 
-All code blocks use **triple backticks**, so users can click the **copy button** on any code block to paste examples directly into their Flutter projects. This README is fully optimized for **GitHub and pub.dev**.
+All code and text are combined here in a single block so users can copy everything at once without multiple copy buttons. This README is fully optimized for **GitHub and pub.dev**.
