@@ -3,7 +3,7 @@
 [![Pub Version](https://img.shields.io/pub/v/flexi_text.svg)](https://pub.dev/packages/flexi_text)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A **responsive and flexible Text widget for Flutter** that automatically adjusts font size based on screen width. Ideal for mobile, tablet, and desktop applications.
+A **responsive and flexible Text widget for Flutter** that automatically adjusts font size based on screen width. Perfect for **mobile, tablet, and desktop applications**.
 
 ---
 
@@ -11,24 +11,28 @@ A **responsive and flexible Text widget for Flutter** that automatically adjusts
 
 - **Responsive Font Size:** Automatically scales text according to screen width.
 - **Smooth Interpolation:** Font size transitions smoothly between breakpoints.
-- **Min/Max Font Size:** Prevent text from becoming too small or too large.
-- **Accessibility Friendly:** Respects `textScaleFactor` and supports `semanticsLabel`.
+- **Min/Max Font Size:** Prevent text from being too small or too large.
+- **Accessibility Friendly:** Supports `textScaleFactor` and `semanticsLabel`.
 - **Flexible Layout:** Supports `TextAlign`, `maxLines`, and `overflow`.
 - **Theming Support:** Falls back to `Theme.of(context).textTheme` if no style is provided.
-- **MIT Licensed:** Free to use and modify in any project.
+- **MIT Licensed:** Free to use and modify.
 
 ---
 
 ## 📦 Installation
 
-Add this to your `pubspec.yaml`:
+Add to your `pubspec.yaml`:
 
+```yaml
 dependencies:
-  flexi_text: ^0.0.1
+  flexi_text: ^0.0.2
+```
 
 Then run:
 
+```bash
 flutter pub get
+```
 
 ---
 
@@ -36,17 +40,22 @@ flutter pub get
 
 Import the package:
 
+```dart
 import 'package:flexi_text/flexi_text.dart';
+```
 
-Basic usage:
+### Basic Usage
 
+```dart
 FlexiText(
   title: "Hello World",
   sizes: {300: 10, 600: 14, 1200: 24},
 )
+```
 
-Advanced usage with **min/max font size, styling, alignment**:
+### Advanced Usage
 
+```dart
 FlexiText(
   title: "Responsive FlexiText",
   sizes: {
@@ -66,6 +75,7 @@ FlexiText(
   overflow: TextOverflow.ellipsis,
   semanticsLabel: "Important responsive text",
 )
+```
 
 ---
 
@@ -73,24 +83,27 @@ FlexiText(
 
 1. Define a **map of screen width to font size**:
 
+```dart
 sizes: {300: 10, 600: 14, 1200: 24}
+```
 
-2. The widget **interpolates font size** between defined breakpoints.
-3. Text scales automatically according to `MediaQuery.textScaleFactor`.
-4. Optional min/max font size ensures readability across devices.
+2. The widget **interpolates font size** between breakpoints.
+3. Text scales according to `MediaQuery.textScaleFactor`.
+4. Min/max font size ensures readability across devices.
 
 ---
 
 ## 💡 Best Practices
 
-- **Wrap FlexiText with Padding** only if needed at the layout level. Avoid hardcoding padding inside the widget.
-- **Use clear breakpoints** for mobile, tablet, and desktop screens.
-- **Combine with Theme** for consistent styling across your app.
+- **Wrap FlexiText with Padding** only if needed at layout level.
+- Use **clear breakpoints** for mobile, tablet, and desktop screens.
+- **Combine with Theme** for consistent styling.
 
 ---
 
 ## 📖 Example App
 
+```dart
 import 'package:flutter/material.dart';
 import 'package:flexi_text/flexi_text.dart';
 
@@ -129,17 +142,20 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+```
 
 ---
 
 ## 📝 License
 
-MIT License © 2025 **Min Thiha Aung**
+MIT License © 2025 **Min Thiha Aung**  
 
-See LICENSE for details.
+See [LICENSE](LICENSE) for details.
 
 ---
 
-## 📌 Pub.dev Page Appearance
+## 📌 Notes
 
-All code and text are combined here in a single block so users can copy everything at once without multiple copy buttons. This README is fully optimized for **GitHub and pub.dev**.
+All text and code are combined into a **single copy block** for GitHub and pub.dev.  
+Users can copy everything at once without multiple copy buttons.  
+This README is optimized for readability and UI appearance.
