@@ -47,3 +47,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 - Improved package description and usage instructions for pub.dev.
 
 ---
+
+## [0.0.5] - 2025-10-31
+### Added
+- Added **single fixed size** support via `size` property for simpler font scaling.
+- Added **alignment** property to wrap text in `Align` without extra widgets.
+- Added optional **onTap** callback for interactive text.
+- Updated example app to demonstrate `size`, `alignment`, and `onTap` usage.
+- README updated with new 0.0.5 examples.

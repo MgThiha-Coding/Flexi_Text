@@ -1,6 +1,6 @@
 name: flexi_text
-description: A responsive and flexible Flutter Text widget with dynamic font scaling for mobile, tablet, and desktop.
-version: 0.0.4
+description: A responsive and flexible Flutter Text widget with dynamic font scaling, optional single size, alignment, and onTap support for mobile, tablet, and desktop.
+version: 0.0.5
 homepage: https://github.com/MgThiha-Coding/Flexi_Text
 repository: https://github.com/MgThiha-Coding/Flexi_Text.git
 documentation: https://github.com/MgThiha-Coding/Flexi_Text#readme

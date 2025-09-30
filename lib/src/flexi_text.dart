@@ -1,38 +1,33 @@
 import 'package:flutter/material.dart';
 
-/// A responsive and flexible text widget that automatically adjusts
-/// its font size based on the available screen width.
+/// A responsive and flexible text widget that adapts its font size
+/// to either a fixed size or screen width breakpoints.
 ///
-/// Designed for mobile, tablet, and desktop screens with smooth
-/// interpolation between breakpoints.
+/// You can provide:
+/// - [size] for a single fixed font size
+/// - [sizes] for responsive font sizes across breakpoints
 ///
-/// Example usage:
-/// ```dart
-/// FlexiText(
-///   title: "Responsive Text",
-///   sizes: {300: 12, 600: 16, 1200: 24},
-///   minFontSize: 10,
-///   maxFontSize: 28,
-///   style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
-///   textAlign: TextAlign.center,
-///   maxLines: 2,
-/// )
-/// ```
+/// Additional options include alignment, min/max font size clamping,
+/// text style, and tap handling.
 class FlexiText extends StatelessWidget {
   /// The text to display.
   final String title;
 
   /// Map of screen width breakpoints to font sizes.
-  /// The key is the screen width (in logical pixels) and the value is the font size.
-  final Map<double, double> sizes;
+  /// Example: `{300: 12, 600: 16, 1200: 24}`.
+  final Map<double, double>? sizes;
 
-  /// Optional text style. If not provided, defaults to the theme's bodyMedium style.
+  /// Single fixed font size.
+  /// If provided, [sizes] is ignored.
+  final double? size;
+
+  /// Optional text style.
   final TextStyle? style;
 
-  /// Minimum font size to prevent text from being too small.
+  /// Minimum font size (to avoid being too small).
   final double? minFontSize;
 
-  /// Maximum font size to prevent text from being too large.
+  /// Maximum font size (to avoid being too large).
   final double? maxFontSize;
 
   /// Optional semantics label for accessibility.
@@ -41,17 +36,24 @@ class FlexiText extends StatelessWidget {
   /// Optional text alignment.
   final TextAlign? textAlign;
 
-  /// Optional maximum number of lines for the text.
+  /// Maximum number of lines.
   final int? maxLines;
 
-  /// Optional overflow behavior.
+  /// Overflow handling when the text is too long.
   final TextOverflow? overflow;
+
+  /// Optional alignment wrapper.
+  final Alignment? alignment;
+
+  /// Optional tap handler.
+  final VoidCallback? onTap;
 
   /// Creates a [FlexiText] widget.
   const FlexiText({
     super.key,
     required this.title,
-    required this.sizes,
+    this.sizes,
+    this.size,
     this.style,
     this.minFontSize,
     this.maxFontSize,
@@ -59,18 +61,22 @@ class FlexiText extends StatelessWidget {
     this.textAlign,
     this.maxLines,
     this.overflow,
+    this.alignment,
+    this.onTap,
   });
 
-  /// Calculates the font size based on screen width using linear interpolation
-  /// between the closest defined breakpoints in [sizes].
+  /// Internal: calculates the font size based on [size] or [sizes].
   double _getFontSize(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
     final textScale = MediaQuery.of(context).textScaleFactor;
 
-    if (sizes.isEmpty) return 14 * textScale;
+    // Use fixed size if provided
+    if (size != null) return size! * textScale;
 
-    // Sort breakpoints in ascending order for interpolation
-    final sortedSizes = sizes.entries.toList()
+    // Default to 14 if no sizes
+    if (sizes == null || sizes!.isEmpty) return 14 * textScale;
+
+    final width = MediaQuery.of(context).size.width;
+    final sortedSizes = sizes!.entries.toList()
       ..sort((a, b) => a.key.compareTo(b.key));
 
     double lowerWidth = sortedSizes.first.key;
@@ -90,12 +96,13 @@ class FlexiText extends StatelessWidget {
       }
     }
 
-    // Linear interpolation between the two closest breakpoints
+    // Linear interpolation
     double fontSize = (upperWidth == lowerWidth)
         ? lowerSize
-        : lowerSize + (upperSize - lowerSize) * (width - lowerWidth) / (upperWidth - lowerWidth);
+        : lowerSize +
+            (upperSize - lowerSize) * (width - lowerWidth) / (upperWidth - lowerWidth);
 
-    // Clamp font size to min/max if provided
+    // Clamp min/max
     if (minFontSize != null) fontSize = fontSize.clamp(minFontSize!, double.infinity);
     if (maxFontSize != null) fontSize = fontSize.clamp(0, maxFontSize!);
 
@@ -104,7 +111,7 @@ class FlexiText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    final textWidget = Text(
       title,
       style: style?.copyWith(fontSize: _getFontSize(context)) ??
           Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: _getFontSize(context)) ??
@@ -114,5 +121,13 @@ class FlexiText extends StatelessWidget {
       overflow: overflow,
       semanticsLabel: semanticsLabel ?? title,
     );
+
+    final aligned = alignment != null
+        ? Align(alignment: alignment!, child: textWidget)
+        : textWidget;
+
+    return onTap != null
+        ? GestureDetector(onTap: onTap, child: aligned)
+        : aligned;
   }
 }

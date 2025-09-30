@@ -37,23 +37,6 @@ void main() {
       expect(textWidget.style?.fontWeight, FontWeight.bold);
     });
 
-    testWidgets('Respects padding', (WidgetTester tester) async {
-      const testText = "Padded Text";
-
-      await tester.pumpWidget(
-        MaterialApp(
-          home: FlexiText(
-            title: testText,
-            sizes: {300.0: 12.0, 600.0: 18.0},
-          ),
-        ),
-      );
-
-      expect(find.byType(Padding), findsOneWidget);
-      final paddingWidget = tester.widget<Padding>(find.byType(Padding));
-      expect(paddingWidget.padding, const EdgeInsets.all(16));
-    });
-
     testWidgets('Supports maxLines and overflow', (WidgetTester tester) async {
       const longText =
           "This is a very long text that should be truncated when maxLines is set.";
@@ -72,6 +55,40 @@ void main() {
       final textWidget = tester.widget<Text>(find.text(longText));
       expect(textWidget.maxLines, 1);
       expect(textWidget.overflow, TextOverflow.ellipsis);
+    });
+
+    testWidgets('Supports onTap', (WidgetTester tester) async {
+      bool tapped = false;
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: FlexiText(
+            title: "Tap Me",
+            size: 20,
+            onTap: () {
+              tapped = true;
+            },
+          ),
+        ),
+      );
+
+      await tester.tap(find.text("Tap Me"));
+      expect(tapped, true);
+    });
+
+    testWidgets('Supports alignment', (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: FlexiText(
+            title: "Aligned Text",
+            size: 20,
+            alignment: Alignment.centerRight,
+          ),
+        ),
+      );
+
+      final alignWidget = tester.widget<Align>(find.byType(Align));
+      expect(alignWidget.alignment, Alignment.centerRight);
     });
   });
 }

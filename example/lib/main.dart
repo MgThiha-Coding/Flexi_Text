@@ -30,15 +30,18 @@ class MyApp extends StatelessWidget {
               FlexiText(
                 title: "Colored & Bold Text",
                 sizes: {300: 12, 600: 18, 1200: 28},
-                style: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 16),
 
-              // Removed padding usage
-              FlexiText(
-                title: "Text without Padding",
-                sizes: {300: 10, 600: 14, 1200: 22},
-                style: const TextStyle(color: Colors.green),
+              // Single fixed size
+              const FlexiText(
+                title: "Fixed Size Text (20px)",
+                size: 20,
+                style: TextStyle(color: Colors.red),
               ),
               const SizedBox(height: 16),
 
@@ -52,15 +55,26 @@ class MyApp extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // With alignment, maxLines, and overflow
+              // With alignment
+              const FlexiText(
+                title: "Centered Text with Alignment",
+                size: 18,
+                alignment: Alignment.center,
+                style: TextStyle(color: Colors.orange),
+              ),
+              const SizedBox(height: 16),
+
+              // With onTap
               FlexiText(
-                title:
-                    "This is a very long text that will overflow if it is too long for the container",
-                sizes: {300: 10, 600: 14, 1200: 20},
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(color: Colors.orange),
+                title: "Tap Me!",
+                size: 22,
+                style: const TextStyle(
+                  color: Colors.teal,
+                  fontWeight: FontWeight.bold,
+                ),
+                onTap: () {
+                  debugPrint("FlexiText tapped!");
+                },
               ),
               const SizedBox(height: 16),
 
@@ -69,7 +83,7 @@ class MyApp extends StatelessWidget {
                 title: "Accessible Text",
                 sizes: {300: 12, 600: 18, 1200: 24},
                 semanticsLabel: "This text is labeled for accessibility",
-                style: const TextStyle(color: Colors.teal),
+                style: const TextStyle(color: Colors.green),
               ),
             ],
           ),
