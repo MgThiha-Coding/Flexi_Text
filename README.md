@@ -26,12 +26,16 @@ A **responsive and flexible Text widget for Flutter** that automatically adjusts
 
 Add to your `pubspec.yaml`:
 
+```yaml
 dependencies:
-  flexi_text: ^0.0.5
+  flexi_text: ^0.0.6
+```
 
 Then run:
 
+```bash
 flutter pub get
+```
 
 ---
 
@@ -39,24 +43,31 @@ flutter pub get
 
 Import the package:
 
+```dart
 import 'package:flexi_text/flexi_text.dart';
+```
 
 ### Basic Usage
 
+```dart
 FlexiText(
   title: "Hello World",
   sizes: {300.0: 10.0, 600.0: 14.0, 1200.0: 24.0},
 )
+```
 
 ### Single Fixed Size
 
+```dart
 FlexiText(
   title: "Fixed Size Text",
   size: 20.0,
 )
+```
 
 ### Alignment and onTap
 
+```dart
 FlexiText(
   title: "Centered & Clickable Text",
   size: 18.0,
@@ -65,9 +76,11 @@ FlexiText(
     debugPrint("Text tapped!");
   },
 )
+```
 
 ### Advanced Responsive Usage
 
+```dart
 FlexiText(
   title: "Responsive FlexiText",
   sizes: {
@@ -87,29 +100,31 @@ FlexiText(
   overflow: TextOverflow.ellipsis,
   semanticsLabel: "Important responsive text",
 )
+```
 
 ---
 
 ## 🧩 How It Works
 
-1. Define a **map of screen width to font size**: sizes: {300.0: 10.0, 600.0: 14.0, 1200.0: 24.0}
-2. The widget **interpolates font size** between breakpoints.
-3. For single fixed size, just set `size: 20.0`.
-4. Text scales according to `MediaQuery.textScaleFactor`.
+1. Define a **map of screen width to font size**: `sizes: {300.0: 10.0, 600.0: 14.0, 1200.0: 24.0}`  
+2. The widget **interpolates font size** between breakpoints.  
+3. For single fixed size, just set `size: 20.0`.  
+4. Text scales according to `MediaQuery.textScaleFactor`.  
 5. Alignment and `onTap` work without extra widgets.
 
 ---
 
 ## 💡 Best Practices
 
-- **Wrap FlexiText with Padding** only if needed at layout level.
-- Use **clear breakpoints** for mobile, tablet, and desktop screens.
+- **Wrap FlexiText with Padding** only if needed at layout level.  
+- Use **clear breakpoints** for mobile, tablet, and desktop screens.  
 - **Combine with Theme** for consistent styling.
 
 ---
 
 ## 📖 Example App
 
+```dart
 import 'package:flutter/material.dart';
 import 'package:flexi_text/flexi_text.dart';
 
@@ -164,6 +179,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+```
 
 ---
 
